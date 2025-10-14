@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replica-set
+  labels:
+    app: replica-set
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: replica-set
+  template:
+    metadata:
+      labels:
+        app: replica-set
+    spec:
+      containers:
+        - name: nginx
+          image: cgr.dev/chainguard/nginx:latest
+          ports:
+            - containerPort: 8080
+              protocol: TCP
