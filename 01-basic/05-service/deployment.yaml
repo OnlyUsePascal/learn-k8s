@@ -1,21 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-deployment
+  name: my-deploy
   labels:
-    app: my-deployment
+    app: my-deploy
+
 spec:
   # replica setup
   replicas: 3
   selector:
     matchLabels:
-      app: my-deployment
+      app: my-pod
 
   # pod setup
   template:
     metadata:
       labels:
-        app: my-deployment
+        app: my-pod
     spec:
       containers:
         - name: nginx
