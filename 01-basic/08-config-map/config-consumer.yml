@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: configmap-example
+spec:
+  containers:
+    - name: nginx
+      image: nginx:1.26.0
+      # env from mount
+      volumeMounts:
+        - name: configmap-file-like-keys
+          mountPath: /etc/config
+
+      # env from property
+      envFrom:
+        - configMapRef:
+            name: property-like-keys
+
+      # env from property - redirect
+      env:
+        - name: MY_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: property-like-keys
+              key: KEY1
+
+  volumes:
+    - name: configmap-file-like-keys
+      configMap:
+        name: file-like-keys

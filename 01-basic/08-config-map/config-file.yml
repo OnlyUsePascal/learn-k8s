@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: file-like-keys
+data:
+  # key convention: lowercase
+  conf.yml: |
+    key1: SendNude
+    key2: HeyBabi
+    name: YourAppName
+    version: 1.0.0
+    author: YourName
